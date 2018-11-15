@@ -1,4 +1,4 @@
-let data = [
+var data = [
   {
     id: 1,
     name: "java",
@@ -224,15 +224,18 @@ let data = [
       "uga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a"
   }
 ];
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 var currentData = [];
 var technologyStates = ["All", "Ideal", "Useful", "Not ready", "Avoid"];
 var technologyTypes = ["Frameworks", "Technologies", "Tools", "Techniques"];
 var classNames = ["all", "ideal", "useful", "not-ready", "avoid"];
 var colorcodes = ["#f6955f", "#82b858", "#2fb1dd", "#f1ba31", "#e65858"];
-let currentTechnologyState = 0;
+var currentTechnologyState = 0;
 var isWheelScroll = false;
 var currentTechnology;
-let currentTechnologyType = data[0].techType;
+var currentTechnologyType = data[0].techType;
 var timeoutId;
 var rotatingAngle = 0;
 var textGroupDistance = 20;
@@ -245,28 +248,31 @@ var centerX = wheelWidth / 2;
 var centerY = wheelHeight / 2;
 
 var typeBoxInnerHeight = wheelHeight * (3 / 4);
-let typeBoxInnerWidth = typeWidth;
-let equidistantTypeBoxLength = typeBoxInnerHeight / technologyTypes.length;
+var typeBoxInnerWidth = typeWidth;
+var equidistantTypeBoxLength = typeBoxInnerHeight / technologyTypes.length;
 
-let circlePositions = technologyTypes.map((type, index) => ({
-  x: typeBoxInnerWidth / 2,
-  y: equidistantTypeBoxLength * (index + 1)
-}));
+var circlePositions = technologyTypes.map(function (type, index) {
+  return {
+    x: typeBoxInnerWidth / 2,
+    y: equidistantTypeBoxLength * (index + 1)
+  };
+});
 
-let textPositions = technologyTypes.map((type, index) => ({
-  x: (typeBoxInnerWidth / 2) - 30,
-  y: equidistantTypeBoxLength * (index + 1)
-}));
+var textPositions = technologyTypes.map(function (type, index) {
+  return {
+    x: typeBoxInnerWidth / 2 - 30,
+    y: equidistantTypeBoxLength * (index + 1)
+  };
+});
 
-let adjacentCirclePositions = technologyTypes.map((type, index) => ({
-  x: typeBoxInnerWidth * (3 / 4),
-  y: equidistantTypeBoxLength * (index + 1)
-}));
+var adjacentCirclePositions = technologyTypes.map(function (type, index) {
+  return {
+    x: typeBoxInnerWidth * (3 / 4),
+    y: equidistantTypeBoxLength * (index + 1)
+  };
+});
 
-let commonLinePositions = [
-  { x: typeWidth, y: wheelHeight / 2 },
-  { x: typeWidth * (3 / 4), y: wheelHeight / 2 }
-];
+var commonLinePositions = [{ x: typeWidth, y: wheelHeight / 2 }, { x: typeWidth * (3 / 4), y: wheelHeight / 2 }];
 
 /*
   An SVG circle with stroke-width renders two concentric circles (or a doughnut like image) with its internal radius as r - ½
@@ -282,62 +288,50 @@ var textLRadius = 13;
 var textSlSize = 11;
 var textLgSize = 13;
 
-var innerSquareX =
-  centerX +
-  (innerCircleRadius + textGroupDistance) *
-    Math.cos((Math.PI / 180) * (45 - 180));
-var innerSquareY =
-  centerY +
-  (innerCircleRadius + textGroupDistance) *
-    Math.sin((Math.PI / 180) * (45 - 180));
+var innerSquareX = centerX + (innerCircleRadius + textGroupDistance) * Math.cos(Math.PI / 180 * (45 - 180));
+var innerSquareY = centerY + (innerCircleRadius + textGroupDistance) * Math.sin(Math.PI / 180 * (45 - 180));
 
-const wheelSvgAttributes = {
+var wheelSvgAttributes = {
   height: wheelHeight,
   width: wheelWidth
 };
 
-const typeSvgAttributes = {
+var typeSvgAttributes = {
   height: wheelHeight,
   width: typeWidth
 };
-const lgAttributes = {
+var lgAttributes = {
   id: "gradient",
   x1: "0%",
   y1: "100%",
   x2: "100%",
   y2: "0%"
 };
-const stopAttributes = [
-  {
-    "stop-color": "#e33780",
-    offset: "0%"
-  },
-  {
-    "stop-color": "#fca33e",
-    offset: "100%"
-  }
-];
-const circleAttributes = [
-  {
-    cx: centerX,
-    cy: centerY,
-    r: innerCircleRadius,
-    fill: 'url("#gradient")'
-  },
-  {
-    cx: centerX,
-    cy: centerY,
-    r: outerCircleRadius,
-    fill: "none",
-    stroke: "url(#gradient)",
-    "stroke-width": strokeWidth
-  }
-];
-const innerForeignAttributes = {
+var stopAttributes = [{
+  "stop-color": "#e33780",
+  offset: "0%"
+}, {
+  "stop-color": "#fca33e",
+  offset: "100%"
+}];
+var circleAttributes = [{
+  cx: centerX,
+  cy: centerY,
+  r: innerCircleRadius,
+  fill: 'url("#gradient")'
+}, {
+  cx: centerX,
+  cy: centerY,
+  r: outerCircleRadius,
+  fill: "none",
+  stroke: "url(#gradient)",
+  "stroke-width": strokeWidth
+}];
+var innerForeignAttributes = {
   x: innerSquareX,
   y: innerSquareY,
-  height: (innerCircleRadius * 2) / 1.414 + textGroupDistance, // sideOfsquare = 2r / squareroot(2)
-  width: (innerCircleRadius * 2) / 1.414 + textGroupDistance
+  height: innerCircleRadius * 2 / 1.414 + textGroupDistance, // sideOfsquare = 2r / squareroot(2)
+  width: innerCircleRadius * 2 / 1.414 + textGroupDistance
 };
 
 var textAttributes = [];
@@ -350,19 +344,19 @@ var textAnimatedAttribute = {
   dur: "0.5s",
   fill: "freeze",
   repeatCount: "1",
-  from: `0 ${centerX} ${centerY}`,
+  from: "0 " + centerX + " " + centerY,
   to: ""
 };
 
-const constructLineAttributes = () => {
-  let lineAttributes = [];
-  const listOfLinePositions = [];
+var constructLineAttributes = function constructLineAttributes() {
+  var lineAttributes = [];
+  var listOfLinePositions = [];
   listOfLinePositions.push(commonLinePositions[0]);
   listOfLinePositions.push(commonLinePositions[1]);
   listOfLinePositions.push(adjacentCirclePositions[currentTechnologyType]);
   listOfLinePositions.push(circlePositions[currentTechnologyType]);
 
-  listOfLinePositions.map((obj, index) => {
+  listOfLinePositions.map(function (obj, index) {
     if (index !== circlePositions.length - 1) {
       lineAttributes.push({
         x1: listOfLinePositions[index].x,
@@ -377,73 +371,63 @@ const constructLineAttributes = () => {
   return lineAttributes;
 };
 
-const constructTextAttributes = () => {
+function constructTextAttributes() {
   textAttributes = []; // clear all text attribute values
   currentData = [];
   if (currentTechnologyState === 0) {
-    currentData = [...data];
+    currentData = [].concat(_toConsumableArray(data));
   } else {
-    data.map(object => {
+    data.map(function (object) {
       if (object.techState === currentTechnologyState) {
         currentData.push(object);
       }
       return null;
     });
   }
-  let angles = [];
-  let length = currentData.length;
+  var angles = [];
+  var length = currentData.length;
   currentTechnology = currentData[0];
   currentTechnologyType = currentData[0].techType;
   equidistantAngle = 360 / length;
-  for (let i = 0; i < length; i++) {
+  for (var i = 0; i < length; i++) {
     angles[i] = i * equidistantAngle;
   }
-  for (let i = 0; i < length; i++) {
-    let tita = angles[i] - 180;
+  for (var _i = 0; _i < length; _i++) {
+    var tita = angles[_i] - 180;
     // x = a + rcos(tita)  y = b + rcos(tita)
-    let x =
-      centerX +
-      (innerCircleRadius + textGroupDistance) *
-        Math.cos((Math.PI / 180) * tita);
-    let y =
-      centerY +
-      (innerCircleRadius + textGroupDistance) *
-        Math.sin((Math.PI / 180) * tita);
-    let isRightHemisphere = angles[i] >= 90 && angles[i] < 270;
+    var x = centerX + (innerCircleRadius + textGroupDistance) * Math.cos(Math.PI / 180 * tita);
+    var y = centerY + (innerCircleRadius + textGroupDistance) * Math.sin(Math.PI / 180 * tita);
+    var isRightHemisphere = angles[_i] >= 90 && angles[_i] < 270;
 
-    let textAttribute = {
+    var textAttribute = {
       tech: {
-        x,
-        y,
+        x: x,
+        y: y,
         class: "text",
-        angle: angles[i],
-        transform: `rotate(${
-          isRightHemisphere ? angles[i] - 180 : angles[i]
-        }, ${x}, ${y}) `,
+        angle: angles[_i],
+        transform: "rotate(" + (isRightHemisphere ? angles[_i] - 180 : angles[_i]) + ", " + x + ", " + y + ") ",
         dy: "0.3em",
         dx: isRightHemisphere ? "1.1em" : "-1.1em",
-        fill: i === 0 ? "#e33780" : "#345A7D",
-        "text-anchor": `${isRightHemisphere ? "start" : "end"} `,
-        "font-size": i === 0 ? textLgSize : textSlSize,
+        fill: _i === 0 ? "#e33780" : "#345A7D",
+        "text-anchor": (isRightHemisphere ? "start" : "end") + " ",
+        "font-size": _i === 0 ? textLgSize : textSlSize,
         "font-weight": "600"
       },
       circleId: {
-        x,
-        y,
-        transform: `rotate(${
-          isRightHemisphere ? angles[i] - 180 : angles[i]
-        }, ${x}, ${y}) `,
+        x: x,
+        y: y,
+        transform: "rotate(" + (isRightHemisphere ? angles[_i] - 180 : angles[_i]) + ", " + x + ", " + y + ") ",
         dy: "0.3em",
         fill: "#fff",
         "text-anchor": "middle",
-        "font-size": i === 0 ? textLgSize - 2 : textSlSize - 2,
+        "font-size": _i === 0 ? textLgSize - 2 : textSlSize - 2,
         "font-weight": "600"
       },
       circle: {
         cx: x,
         cy: y,
-        r: i === 0 ? textLRadius : textSRadius,
-        fill: colorcodes[currentData[i].techState]
+        r: _i === 0 ? textLRadius : textSRadius,
+        fill: colorcodes[currentData[_i].techState]
       }
     };
     textAttributes.push(textAttribute);
@@ -453,8 +437,8 @@ const constructTextAttributes = () => {
 //------------------comment brief-----------------------------//
 constructTextAttributes();
 
-const onLoadComplete = () => {
-  const rootElement = document.getElementById("root");
+function onLoadComplete() {
+  var rootElement = document.getElementById("root");
   if (rootElement.childElementCount) {
     while (rootElement.firstChild) {
       rootElement.removeChild(rootElement.firstChild);
@@ -462,36 +446,36 @@ const onLoadComplete = () => {
   }
 
   var svgElement = createElementNS("svg", typeSvgAttributes);
-  for (let i = 0; i < circlePositions.length; i++) {
+  for (var i = 0; i < circlePositions.length; i++) {
     var cir = createElementNS("circle", {
       cx: circlePositions[i].x,
       cy: circlePositions[i].y,
       r: 15,
       fill: i === currentTechnologyType ? "#e53f65" : "none",
       stroke: i === currentTechnologyType ? "#e53f65" : "#d5d5d5",
-    "stroke-width": 2
+      "stroke-width": 2
 
     });
     svgElement.appendChild(cir);
   }
 
-  for (let i = 0; i < textPositions.length; i++) {
+  for (var _i2 = 0; _i2 < textPositions.length; _i2++) {
     var text = createElementNS("text", {
-      x: textPositions[i].x,
-      y: textPositions[i].y,
-      dy:"0.3em",
-      fill: i === currentTechnologyType ? "#e53f65" : "#d5d5d5",
+      x: textPositions[_i2].x,
+      y: textPositions[_i2].y,
+      dy: "0.3em",
+      fill: _i2 === currentTechnologyType ? "#e53f65" : "#d5d5d5",
       "text-anchor": "end",
       "font-size": "13",
       "font-weight": "600"
     });
-    text.innerHTML = technologyTypes[i];
+    text.innerHTML = technologyTypes[_i2];
     svgElement.appendChild(text);
   }
 
-  let lineAttributes = constructLineAttributes();
-  lineAttributes.map(attribute => {
-    let lineElement = createElementNS("line", attribute);
+  var lineAttributes = constructLineAttributes();
+  lineAttributes.map(function (attribute) {
+    var lineElement = createElementNS("line", attribute);
     svgElement.appendChild(lineElement);
     return null;
   });
@@ -501,7 +485,7 @@ const onLoadComplete = () => {
   var techWheelGroup = createTechWheel();
   rootElement.appendChild(techWheelGroup);
 
-  const techStateElement = document.getElementById("tech-state");
+  var techStateElement = document.getElementById("tech-state");
   if (techStateElement.childElementCount) {
     techStateElement.removeChild(techStateElement.childNodes[0]);
   }
@@ -509,7 +493,7 @@ const onLoadComplete = () => {
   techStateElement.appendChild(technologyStates);
 };
 
-const createTechWheel = () => {
+function createTechWheel() {
   var techWheelGroup = createElementNS("svg", wheelSvgAttributes);
   techWheelGroup.addEventListener("wheel", onMouseWheel);
 
@@ -545,13 +529,13 @@ const createTechWheel = () => {
   return techWheelGroup;
 };
 
-const createTechStates = () => {
-  const techStateDiv = document.createElement("div");
+function createTechStates() {
+  var techStateDiv = document.createElement("div");
 
-  technologyStates.map((stateType, index) => {
-    const selectType = document.createElement("div");
+  technologyStates.map(function (stateType, index) {
+    var selectType = document.createElement("div");
     selectType.className = "select-type";
-    selectType.addEventListener("click", evt => {
+    selectType.addEventListener("click", function (evt) {
       removeSelectedType();
       // innerDiv.className="inner";
       currentTechnologyState = index;
@@ -559,15 +543,15 @@ const createTechStates = () => {
       onLoadComplete();
     });
 
-    const outerDiv = document.createElement("div");
-    outerDiv.className = `outer ${classNames[index]}`;
-    const innerDiv = document.createElement("div");
+    var outerDiv = document.createElement("div");
+    outerDiv.className = "outer " + classNames[index];
+    var innerDiv = document.createElement("div");
     innerDiv.id = stateType;
     innerDiv.className = index === currentTechnologyState ? "inner" : "";
     outerDiv.appendChild(innerDiv);
     selectType.appendChild(outerDiv);
 
-    const nameElement = document.createElement("span");
+    var nameElement = document.createElement("span");
     nameElement.className = "name";
     nameElement.innerHTML = stateType;
     selectType.appendChild(nameElement);
@@ -577,33 +561,33 @@ const createTechStates = () => {
   return techStateDiv;
 };
 
-const removeSelectedType = () => {
-  technologyStates.map(stateType => {
-    let element = document.getElementById(stateType);
+function removeSelectedType() {
+  technologyStates.map(function (stateType) {
+    var element = document.getElementById(stateType);
     element.classList.remove("inner");
   });
 };
 
 function createInnerCircleContent() {
-  const innerElement = createElementNS("foreignObject", innerForeignAttributes);
-  const shortInfo = document.createElement("div");
+  var innerElement = createElementNS("foreignObject", innerForeignAttributes);
+  var shortInfo = document.createElement("div");
   shortInfo.className = "shortInfo";
 
-  const heading = document.createElement("div");
+  var heading = document.createElement("div");
   heading.id = "heading";
   heading.className = "heading";
   heading.innerHTML = currentTechnology.name;
   shortInfo.appendChild(heading);
 
-  const content = document.createElement("div");
+  var content = document.createElement("div");
   content.id = "content";
   content.className = "content";
   content.innerHTML = currentTechnology.description;
   shortInfo.appendChild(content);
 
-  const readMoreButton = document.createElement("div");
+  var readMoreButton = document.createElement("div");
   readMoreButton.style.margin = "20px";
-  const span = document.createElement("span");
+  var span = document.createElement("span");
   span.className = "readMore";
   span.innerHTML = "read more";
   readMoreButton.appendChild(span);
@@ -621,25 +605,25 @@ function onMouseWheel(evt) {
     var to;
     if (deltaY > 0) {
       rotatingAngle = rotatingAngle + equidistantAngle;
-      to = `${rotatingAngle} ${centerX} ${centerY}`;
-      let element = currentData.pop(); // deltaY = positve- rotate  currentData array in clockwise
+      to = rotatingAngle + " " + centerX + " " + centerY;
+      var element = currentData.pop(); // deltaY = positve- rotate  currentData array in clockwise
       currentData.unshift(element);
     } else {
       rotatingAngle = rotatingAngle - equidistantAngle;
-      to = `${rotatingAngle} ${centerX} ${centerY}`;
-      let element = currentData.shift(); // deltaY = negative- rotate  currentData array in anticlockwise
-      currentData.push(element);
+      to = rotatingAngle + " " + centerX + " " + centerY;
+      var _element = currentData.shift(); // deltaY = negative- rotate  currentData array in anticlockwise
+      currentData.push(_element);
     }
     currentTechnology = currentData[0];
     currentTechnologyType = currentData[0].techType;
 
     // spin wheel by equidistant angle
-    const animateElement = document.getElementById("animate");
+    var animateElement = document.getElementById("animate");
     animateElement.setAttributeNS(null, "to", to);
     animateElement.beginElement();
 
     clearTimeout(timeoutId);
-    timeoutId = window.setTimeout(() => {
+    timeoutId = window.setTimeout(function () {
       rotatingAngle = 0;
       isWheelScroll = false;
       onLoadComplete();
@@ -651,55 +635,52 @@ function createTextGroup() {
   var group = createElementNS("g", {
     id: "text-group"
   });
-  const animatedElement = createElementNS(
-    "animateTransform",
-    textAnimatedAttribute
-  );
+  var animatedElement = createElementNS("animateTransform", textAnimatedAttribute);
   group.appendChild(animatedElement);
 
-  for (let i = 0; i < textAttributes.length; i++) {
-    let subGroup = createElementNS("g", {
+  for (var i = 0; i < textAttributes.length; i++) {
+    var subGroup = createElementNS("g", {
       id: i
     });
 
-    let textElement = createElementNS("text", textAttributes[i].tech);
+    var textElement = createElementNS("text", textAttributes[i].tech);
     textElement.innerHTML = currentData[i].name;
     subGroup.appendChild(textElement);
 
     textElement.addEventListener("click", onClickRotate);
 
-    let circleElement = createElementNS("circle", textAttributes[i].circle);
+    var circleElement = createElementNS("circle", textAttributes[i].circle);
     subGroup.appendChild(circleElement);
 
-    let circularcontent = createElementNS("text", textAttributes[i].circleId);
+    var circularcontent = createElementNS("text", textAttributes[i].circleId);
     circularcontent.innerHTML = currentData[i].id;
     subGroup.appendChild(circularcontent);
 
-    group.append(subGroup);
+    group.appendChild(subGroup);
   }
   return group;
 }
 
 function onClickRotate(evt) {
-  const angle = evt.target.getAttribute("angle");
-  let noOfshift = Math.round(angle / equidistantAngle);
-  let arr = currentData.splice(0, noOfshift);
+  var angle = evt.target.getAttribute("angle");
+  var noOfshift = Math.round(angle / equidistantAngle);
+  var arr = currentData.splice(0, noOfshift);
   currentData = currentData.concat(arr);
   currentTechnology = currentData[0];
   currentTechnologyType = currentData[0].techType;
 
-  let to;
+  var to = void 0;
   if (angle > 180) {
-    to = `${360 - angle} ${centerX} ${centerY}`;
+    to = 360 - angle + " " + centerX + " " + centerY;
   } else {
-    to = `-${angle} ${centerX} ${centerY}`;
+    to = "-" + angle + " " + centerX + " " + centerY;
   }
-  const animateElement = document.getElementById("animate");
+  var animateElement = document.getElementById("animate");
   animateElement.setAttributeNS(null, "to", to);
   animateElement.beginElement();
 
   clearTimeout(timeoutId);
-  timeoutId = window.setTimeout(() => {
+  timeoutId = window.setTimeout(function () {
     onLoadComplete();
   }, 750);
 }
@@ -707,11 +688,13 @@ function onClickRotate(evt) {
 function createElementNS(name, attributes) {
   var svgns = "http://www.w3.org/2000/svg";
   var element = document.createElementNS(svgns, name);
-  Object.keys(attributes).map(key => {
+  Object.keys(attributes).map(function (key) {
     element.setAttributeNS(null, key, attributes[key]);
     return null;
   });
   return element;
 }
+
+window.addEventListener('resize', function () { onLoadComplete(); });
 
 onLoadComplete();
