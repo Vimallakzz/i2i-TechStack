@@ -225,54 +225,77 @@ var data = [
   }
 ];
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function _toConsumableArray(arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+      arr2[i] = arr[i];
+    }
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+}
 
-var currentData = [];
+var currentData = [...data];
 var technologyStates = ["All", "Ideal", "Useful", "Not ready", "Avoid"];
+var stateTechnolgies = {};
+data.map(object => {
+  var stateId = object.techState;
+  var list = stateTechnolgies[stateId] || [];
+  list.push(object);
+  stateTechnolgies[object.techState] = list;
+});
+
 var technologyTypes = ["Frameworks", "Technologies", "Tools", "Techniques"];
 var classNames = ["all", "ideal", "useful", "not-ready", "avoid"];
 var colorcodes = ["#f6955f", "#82b858", "#2fb1dd", "#f1ba31", "#e65858"];
 var currentTechnologyState = 0;
 var isWheelScroll = false;
-var currentTechnology;
-var currentTechnologyType = data[0].techType;
+var currentTechnology = currentData[0];
+var currentTechnologyType = currentData[0].techType;
 var timeoutId;
+var windowWidth= window.innerWidth;
 var rotatingAngle = 0;
 var textGroupDistance = 20;
 
 var wheelHeight = 600;
 var wheelWidth = 600;
 var typeWidth = 250;
+var typeWidthMd = 220;
 
 var centerX = wheelWidth / 2;
 var centerY = wheelHeight / 2;
 
 var typeBoxInnerHeight = wheelHeight * (3 / 4);
 var typeBoxInnerWidth = typeWidth;
+var circleCenterX = typeBoxInnerWidth / 2 + 30;
 var equidistantTypeBoxLength = typeBoxInnerHeight / technologyTypes.length;
 
-var circlePositions = technologyTypes.map(function (type, index) {
+var circlePositions = technologyTypes.map(function(type, index) {
   return {
-    x: typeBoxInnerWidth / 2,
+    x: typeBoxInnerWidth * (2.3 / 4),
     y: equidistantTypeBoxLength * (index + 1)
   };
 });
 
-var textPositions = technologyTypes.map(function (type, index) {
+var textPositions = technologyTypes.map(function(type, index) {
   return {
-    x: typeBoxInnerWidth / 2 - 30,
+    x: typeBoxInnerWidth * (2.3 / 4) - 20,
     y: equidistantTypeBoxLength * (index + 1)
   };
 });
 
-var adjacentCirclePositions = technologyTypes.map(function (type, index) {
+var adjacentCirclePositions = technologyTypes.map(function(type, index) {
   return {
-    x: typeBoxInnerWidth * (3 / 4),
+    x: typeBoxInnerWidth * (3.3 / 4),
     y: equidistantTypeBoxLength * (index + 1)
   };
 });
 
-var commonLinePositions = [{ x: typeWidth, y: wheelHeight / 2 }, { x: typeWidth * (3 / 4), y: wheelHeight / 2 }];
+var commonLinePositions = [
+  { x: typeWidth, y: wheelHeight / 2 },
+  { x: typeWidth * (3.3 / 4), y: wheelHeight / 2 }
+];
 
 /*
   An SVG circle with stroke-width renders two concentric circles (or a doughnut like image) with its internal radius as r - ½
@@ -288,8 +311,14 @@ var textLRadius = 13;
 var textSlSize = 11;
 var textLgSize = 13;
 
-var innerSquareX = centerX + (innerCircleRadius + textGroupDistance) * Math.cos(Math.PI / 180 * (45 - 180));
-var innerSquareY = centerY + (innerCircleRadius + textGroupDistance) * Math.sin(Math.PI / 180 * (45 - 180));
+var innerSquareX =
+  centerX +
+  (innerCircleRadius + textGroupDistance) *
+    Math.cos((Math.PI / 180) * (45 - 180));
+var innerSquareY =
+  centerY +
+  (innerCircleRadius + textGroupDistance) *
+    Math.sin((Math.PI / 180) * (45 - 180));
 
 var wheelSvgAttributes = {
   height: wheelHeight,
@@ -298,7 +327,7 @@ var wheelSvgAttributes = {
 
 var typeSvgAttributes = {
   height: wheelHeight,
-  width: typeWidth
+  width: windowWidth >= 992 && windowWidth < 1300 ? typeWidthMd : typeWidth
 };
 var lgAttributes = {
   id: "gradient",
@@ -307,34 +336,39 @@ var lgAttributes = {
   x2: "100%",
   y2: "0%"
 };
-var stopAttributes = [{
-  "stop-color": "#e33780",
-  offset: "0%"
-}, {
-  "stop-color": "#fca33e",
-  offset: "100%"
-}];
-var circleAttributes = [{
-  cx: centerX,
-  cy: centerY,
-  r: innerCircleRadius,
-  fill: 'url("#gradient")'
-}, {
-  cx: centerX,
-  cy: centerY,
-  r: outerCircleRadius,
-  fill: "none",
-  stroke: "url(#gradient)",
-  "stroke-width": strokeWidth
-}];
+var stopAttributes = [
+  {
+    "stop-color": "#e33780",
+    offset: "0%"
+  },
+  {
+    "stop-color": "#fca33e",
+    offset: "100%"
+  }
+];
+var circleAttributes = [
+  {
+    cx: centerX,
+    cy: centerY,
+    r: innerCircleRadius,
+    fill: 'url("#gradient")'
+  },
+  {
+    cx: centerX,
+    cy: centerY,
+    r: outerCircleRadius,
+    fill: "none",
+    stroke: "url(#gradient)",
+    "stroke-width": strokeWidth
+  }
+];
 var innerForeignAttributes = {
   x: innerSquareX,
   y: innerSquareY,
-  height: innerCircleRadius * 2 / 1.414 + textGroupDistance, // sideOfsquare = 2r / squareroot(2)
-  width: innerCircleRadius * 2 / 1.414 + textGroupDistance
+  height: (innerCircleRadius * 2) / 1.414 + textGroupDistance, // sideOfsquare = 2r / squareroot(2)
+  width: (innerCircleRadius * 2) / 1.414 + textGroupDistance
 };
 
-var textAttributes = [];
 var equidistantAngle;
 var textAnimatedAttribute = {
   id: "animate",
@@ -348,7 +382,7 @@ var textAnimatedAttribute = {
   to: ""
 };
 
-var constructLineAttributes = function constructLineAttributes() {
+function constructLineAttributes() {
   var lineAttributes = [];
   var listOfLinePositions = [];
   listOfLinePositions.push(commonLinePositions[0]);
@@ -356,7 +390,7 @@ var constructLineAttributes = function constructLineAttributes() {
   listOfLinePositions.push(adjacentCirclePositions[currentTechnologyType]);
   listOfLinePositions.push(circlePositions[currentTechnologyType]);
 
-  listOfLinePositions.map(function (obj, index) {
+  listOfLinePositions.map(function(obj, index) {
     if (index !== circlePositions.length - 1) {
       lineAttributes.push({
         x1: listOfLinePositions[index].x,
@@ -369,21 +403,25 @@ var constructLineAttributes = function constructLineAttributes() {
     return null;
   });
   return lineAttributes;
-};
+}
+
+function reinitialise() {
+  windowWidth = window.innerWidth;
+  if (windowWidth >= 992 && windowWidth < 1300) {
+    typeSvgAttributes = {
+      height: wheelHeight,
+      width: typeWidthMd
+    };
+  } else if (windowWidth >= 1300) {
+    typeSvgAttributes = {
+      height: wheelHeight,
+      width: typeWidth
+    };
+  }
+}
 
 function constructTextAttributes() {
-  textAttributes = []; // clear all text attribute values
-  currentData = [];
-  if (currentTechnologyState === 0) {
-    currentData = [].concat(_toConsumableArray(data));
-  } else {
-    data.map(function (object) {
-      if (object.techState === currentTechnologyState) {
-        currentData.push(object);
-      }
-      return null;
-    });
-  }
+  var textAttributes = [];
   var angles = [];
   var length = currentData.length;
   currentTechnology = currentData[0];
@@ -395,8 +433,14 @@ function constructTextAttributes() {
   for (var _i = 0; _i < length; _i++) {
     var tita = angles[_i] - 180;
     // x = a + rcos(tita)  y = b + rcos(tita)
-    var x = centerX + (innerCircleRadius + textGroupDistance) * Math.cos(Math.PI / 180 * tita);
-    var y = centerY + (innerCircleRadius + textGroupDistance) * Math.sin(Math.PI / 180 * tita);
+    var x =
+      centerX +
+      (innerCircleRadius + textGroupDistance) *
+        Math.cos((Math.PI / 180) * tita);
+    var y =
+      centerY +
+      (innerCircleRadius + textGroupDistance) *
+        Math.sin((Math.PI / 180) * tita);
     var isRightHemisphere = angles[_i] >= 90 && angles[_i] < 270;
 
     var textAttribute = {
@@ -405,7 +449,14 @@ function constructTextAttributes() {
         y: y,
         class: "text",
         angle: angles[_i],
-        transform: "rotate(" + (isRightHemisphere ? angles[_i] - 180 : angles[_i]) + ", " + x + ", " + y + ") ",
+        transform:
+          "rotate(" +
+          (isRightHemisphere ? angles[_i] - 180 : angles[_i]) +
+          ", " +
+          x +
+          ", " +
+          y +
+          ") ",
         dy: "0.3em",
         dx: isRightHemisphere ? "1.1em" : "-1.1em",
         fill: _i === 0 ? "#e33780" : "#345A7D",
@@ -416,7 +467,14 @@ function constructTextAttributes() {
       circleId: {
         x: x,
         y: y,
-        transform: "rotate(" + (isRightHemisphere ? angles[_i] - 180 : angles[_i]) + ", " + x + ", " + y + ") ",
+        transform:
+          "rotate(" +
+          (isRightHemisphere ? angles[_i] - 180 : angles[_i]) +
+          ", " +
+          x +
+          ", " +
+          y +
+          ") ",
         dy: "0.3em",
         fill: "#fff",
         "text-anchor": "middle",
@@ -432,18 +490,37 @@ function constructTextAttributes() {
     };
     textAttributes.push(textAttribute);
   }
-};
+  return textAttributes;
+}
 
-//------------------comment brief-----------------------------//
-constructTextAttributes();
-
-function onLoadComplete() {
-  var rootElement = document.getElementById("root");
-  if (rootElement.childElementCount) {
-    while (rootElement.firstChild) {
-      rootElement.removeChild(rootElement.firstChild);
+function removeAllChild(element) {
+  if (element.childElementCount) {
+    while (element.firstChild) {
+      element.removeChild(element.firstChild);
     }
   }
+}
+
+function removePreviousRender() {
+  var listIds = ["root", "tech-state", "type-detail", "technology-detail" ]
+  listIds.map(id => {
+    var element = document.getElementById(id);
+    removeAllChild(element);
+    return null;
+  })
+}
+
+function onLoadComplete() {
+  removePreviousRender();
+  windowWidth = window.innerWidth;
+  if (window.innerWidth >= 992) {
+    renderWheelModel();
+  }
+}
+
+function renderWheelModel() {
+  var rootElement = document.getElementById("root");
+  var techStateElement = document.getElementById("tech-state");
 
   var svgElement = createElementNS("svg", typeSvgAttributes);
   for (var i = 0; i < circlePositions.length; i++) {
@@ -454,7 +531,6 @@ function onLoadComplete() {
       fill: i === currentTechnologyType ? "#e53f65" : "none",
       stroke: i === currentTechnologyType ? "#e53f65" : "#d5d5d5",
       "stroke-width": 2
-
     });
     svgElement.appendChild(cir);
   }
@@ -474,24 +550,57 @@ function onLoadComplete() {
   }
 
   var lineAttributes = constructLineAttributes();
-  lineAttributes.map(function (attribute) {
+  lineAttributes.map(function(attribute) {
     var lineElement = createElementNS("line", attribute);
     svgElement.appendChild(lineElement);
     return null;
   });
-
   rootElement.appendChild(svgElement);
 
   var techWheelGroup = createTechWheel();
   rootElement.appendChild(techWheelGroup);
 
-  var techStateElement = document.getElementById("tech-state");
-  if (techStateElement.childElementCount) {
-    techStateElement.removeChild(techStateElement.childNodes[0]);
+  var techStates = createTechStates();
+  techStateElement.appendChild(techStates);
+
+  var typeDetail = document.getElementById('type-detail');
+
+  var typeHeading = document.createElement("div");
+  typeHeading.className = "col-lg-offset-1 col-md-offset-1 p-0 type-heading";
+  typeHeading.innerHTML = technologyTypes[currentTechnologyType];
+  typeDetail.appendChild(typeHeading);
+
+  var typecontent = document.createElement("div");
+  typecontent.className = "col-lg-offset-1 col-md-offset-1 p-0 type-content";
+  typecontent.innerHTML = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+  typeDetail.appendChild(typecontent);
+
+  var technolgyDetails = document.getElementById("technology-detail");
+  removeAllChild(technolgyDetails);
+
+  for(var i = 1; i < technologyStates.length; i++) {
+    var list = stateTechnolgies[i];
+    var element = document.createElement("div");
+    element.style = "border-right: 2px solid #e9ebef"
+    element.className = "col-lg-3 col-md-3 p-0 verticalAlign";
+
+    var group = document.createElement("div");
+
+    var heading = document.createElement("div");
+    heading.className = "state-heading" + " " + classNames[i];
+    heading.innerHTML = technologyStates[i];
+    group.appendChild(heading);
+
+    list.map(obj => {
+      var item = document.createElement("div");
+      item.className = "tech-item p-0"
+      item.innerHTML = obj.name;
+      group.appendChild(item);
+    });
+    element.appendChild(group);
+    technolgyDetails.appendChild(element);
   }
-  var technologyStates = createTechStates();
-  techStateElement.appendChild(technologyStates);
-};
+}
 
 function createTechWheel() {
   var techWheelGroup = createElementNS("svg", wheelSvgAttributes);
@@ -527,19 +636,19 @@ function createTechWheel() {
   techWheelGroup.appendChild(lineElement);
 
   return techWheelGroup;
-};
+}
 
 function createTechStates() {
   var techStateDiv = document.createElement("div");
 
-  technologyStates.map(function (stateType, index) {
+  technologyStates.map(function(stateType, index) {
     var selectType = document.createElement("div");
     selectType.className = "select-type";
-    selectType.addEventListener("click", function (evt) {
+    selectType.addEventListener("click", function(evt) {
       removeSelectedType();
       // innerDiv.className="inner";
       currentTechnologyState = index;
-      constructTextAttributes();
+      onChangeState();
       onLoadComplete();
     });
 
@@ -559,14 +668,28 @@ function createTechStates() {
     techStateDiv.appendChild(selectType);
   });
   return techStateDiv;
-};
+}
+
+function onChangeState() {
+  currentData = [];
+  if (currentTechnologyState === 0) {
+    currentData = [].concat(_toConsumableArray(data));
+  } else {
+    data.map(function(object) {
+      if (object.techState === currentTechnologyState) {
+        currentData.push(object);
+      }
+      return null;
+    });
+  }
+}
 
 function removeSelectedType() {
-  technologyStates.map(function (stateType) {
+  technologyStates.map(function(stateType) {
     var element = document.getElementById(stateType);
     element.classList.remove("inner");
   });
-};
+}
 
 function createInnerCircleContent() {
   var innerElement = createElementNS("foreignObject", innerForeignAttributes);
@@ -623,7 +746,7 @@ function onMouseWheel(evt) {
     animateElement.beginElement();
 
     clearTimeout(timeoutId);
-    timeoutId = window.setTimeout(function () {
+    timeoutId = window.setTimeout(function() {
       rotatingAngle = 0;
       isWheelScroll = false;
       onLoadComplete();
@@ -635,24 +758,29 @@ function createTextGroup() {
   var group = createElementNS("g", {
     id: "text-group"
   });
-  var animatedElement = createElementNS("animateTransform", textAnimatedAttribute);
+  var animatedElement = createElementNS(
+    "animateTransform",
+    textAnimatedAttribute
+  );
   group.appendChild(animatedElement);
 
-  for (var i = 0; i < textAttributes.length; i++) {
+  var textGroupAttributes = constructTextAttributes();
+
+  for (var i = 0; i < textGroupAttributes.length; i++) {
     var subGroup = createElementNS("g", {
       id: i
     });
 
-    var textElement = createElementNS("text", textAttributes[i].tech);
+    var textElement = createElementNS("text", textGroupAttributes[i].tech);
     textElement.innerHTML = currentData[i].name;
     subGroup.appendChild(textElement);
 
     textElement.addEventListener("click", onClickRotate);
 
-    var circleElement = createElementNS("circle", textAttributes[i].circle);
+    var circleElement = createElementNS("circle", textGroupAttributes[i].circle);
     subGroup.appendChild(circleElement);
 
-    var circularcontent = createElementNS("text", textAttributes[i].circleId);
+    var circularcontent = createElementNS("text", textGroupAttributes[i].circleId);
     circularcontent.innerHTML = currentData[i].id;
     subGroup.appendChild(circularcontent);
 
@@ -680,7 +808,7 @@ function onClickRotate(evt) {
   animateElement.beginElement();
 
   clearTimeout(timeoutId);
-  timeoutId = window.setTimeout(function () {
+  timeoutId = window.setTimeout(function() {
     onLoadComplete();
   }, 750);
 }
@@ -688,13 +816,16 @@ function onClickRotate(evt) {
 function createElementNS(name, attributes) {
   var svgns = "http://www.w3.org/2000/svg";
   var element = document.createElementNS(svgns, name);
-  Object.keys(attributes).map(function (key) {
+  Object.keys(attributes).map(function(key) {
     element.setAttributeNS(null, key, attributes[key]);
     return null;
   });
   return element;
 }
 
-window.addEventListener('resize', function () { onLoadComplete(); });
+window.addEventListener("resize", function() {
+  reinitialise();
+  onLoadComplete();
+});
 
 onLoadComplete();

@@ -11,6 +11,11 @@
   align-items: center;
 }
 
+.verticalAlign {
+  display: flex;
+  justify-content: center;
+}
+
 .right {
   float: right;
 }
@@ -18,6 +23,24 @@
 .p-0 {
   padding: 0;
 }
+
+.p-b-40 {
+  padding-bottom: 40px;
+}
+
+.p-t-b-25 {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.p-l-10 {
+  padding-left: 10px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 .select-type {
   /* position: relative; */
   margin: 15px 0;
@@ -64,6 +87,7 @@
 }
 .ideal {
   border-color: #82b858 !important;
+  color: #82b858 !important;
 }
 
 .ideal .inner {
@@ -72,6 +96,7 @@
 
 .useful {
   border-color: #2fb1dd !important;
+  color: #2fb1dd !important;
 }
 
 .useful .inner {
@@ -80,6 +105,7 @@
 
 .not-ready {
   border-color: #f1ba31 !important;
+  color: #f1ba31 !important;
 }
 
 .not-ready .inner {
@@ -88,6 +114,7 @@
 
 .avoid {
   border-color: #e65858 !important;
+  color: #e65858 !important;
 }
 
 .avoid .inner {
@@ -131,4 +158,47 @@
 .text:hover {
   font-size: 13px;
   cursor: pointer;
+}
+
+#type-detail {
+  background: #e9ebef;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#type-detail > div {
+  width: 50%;
+}
+
+.type-heading {
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.type-content {
+  line-height: 2em;
+  padding-top: 11px;
+}
+
+.state-heading {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+
+.tech-item {
+  color: #337ab7;
+  padding-top: 10px;
+  text-transform: capitalize;
+}
+
+@media screen and (min-width: 1300px) {
+  #type-detail > div {
+    padding-left: 3%;
+  }
+  #technology-detail {
+    padding-left: 3%;
+  }
 }
