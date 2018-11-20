@@ -3,7 +3,7 @@ var data = [
     id: 1,
     name: "java",
     techState: 1,
-    techType: 2,
+    techType: 1,
     description:
       "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a"
   },
@@ -19,7 +19,7 @@ var data = [
     id: 3,
     name: "c++",
     techState: 1,
-    techType: 2,
+    techType: 0,
     description:
       "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
   },
@@ -27,7 +27,7 @@ var data = [
     id: 4,
     name: "HTML",
     techState: 1,
-    techType: 2,
+    techType: 3,
     description:
       "ontrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old"
   },
@@ -35,7 +35,7 @@ var data = [
     id: 5,
     name: "JS",
     techState: 1,
-    techType: 2,
+    techType: 0,
     description:
       "Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of"
   },
@@ -51,7 +51,7 @@ var data = [
     id: 7,
     name: "css",
     techState: 1,
-    techType: 2,
+    techType: 3,
     description:
       "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham."
   },
@@ -59,7 +59,7 @@ var data = [
     id: 8,
     name: "HighCharts",
     techState: 1,
-    techType: 2,
+    techType: 3,
     description:
       "the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
   },
@@ -67,7 +67,7 @@ var data = [
     id: 9,
     name: "React",
     techState: 1,
-    techType: 2,
+    techType: 1,
     description:
       "sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on"
   },
@@ -75,7 +75,7 @@ var data = [
     id: 10,
     name: "angular",
     techState: 1,
-    techType: 2,
+    techType: 1,
     description:
       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be"
   },
@@ -83,7 +83,7 @@ var data = [
     id: 11,
     name: "angular 6",
     techState: 2,
-    techType: 1,
+    techType: 2,
     description:
       "l text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
   },
@@ -99,7 +99,7 @@ var data = [
     id: 13,
     name: "sql",
     techState: 2,
-    techType: 1,
+    techType: 0,
     description:
       "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of"
   },
@@ -107,7 +107,7 @@ var data = [
     id: 14,
     name: "javascript",
     techState: 2,
-    techType: 1,
+    techType: 3,
     description:
       "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"
   },
@@ -115,7 +115,7 @@ var data = [
     id: 15,
     name: "c#",
     techState: 2,
-    techType: 1,
+    techType: 2,
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
   },
@@ -131,7 +131,7 @@ var data = [
     id: 17,
     name: "php",
     techState: 2,
-    techType: 1,
+    techType: 3,
     description:
       "sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem"
   },
@@ -147,7 +147,7 @@ var data = [
     id: 19,
     name: "swift",
     techState: 3,
-    techType: 3,
+    techType: 1,
     description:
       "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids "
   },
@@ -155,7 +155,7 @@ var data = [
     id: 20,
     name: "Ecmascript",
     techState: 3,
-    techType: 3,
+    techType: 2,
     description:
       "asure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances"
   },
@@ -163,7 +163,7 @@ var data = [
     id: 21,
     name: "groovy",
     techState: 3,
-    techType: 3,
+    techType: 2,
     description:
       "occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
   },
@@ -171,7 +171,7 @@ var data = [
     id: 22,
     name: "C shell",
     techState: 3,
-    techType: 3,
+    techType: 0,
     description:
       " vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem"
   },
@@ -179,7 +179,7 @@ var data = [
     id: 23,
     name: "IBM BASICA",
     techState: 3,
-    techType: 3,
+    techType: 1,
     description:
       "rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat"
   },
@@ -187,7 +187,7 @@ var data = [
     id: 24,
     name: ".NET",
     techState: 3,
-    techType: 3,
+    techType: 0,
     description:
       "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and"
   },
@@ -195,7 +195,7 @@ var data = [
     id: 25,
     name: "j++",
     techState: 4,
-    techType: 0,
+    techType: 2,
     description:
       "easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains"
   },
@@ -203,7 +203,7 @@ var data = [
     id: 26,
     name: "MATLAB",
     techState: 4,
-    techType: 0,
+    techType: 1,
     description:
       " et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere"
   },
@@ -219,7 +219,7 @@ var data = [
     id: 28,
     name: "prolog",
     techState: 4,
-    techType: 0,
+    techType: 3,
     description:
       "uga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a"
   }
@@ -236,25 +236,36 @@ function _toConsumableArray(arr) {
   }
 }
 
-var currentData = [...data];
-var technologyStates = ["All", "Ideal", "Useful", "Not ready", "Avoid"];
-var stateTechnolgies = {};
-data.map(object => {
-  var stateId = object.techState;
-  var list = stateTechnolgies[stateId] || [];
-  list.push(object);
-  stateTechnolgies[object.techState] = list;
-});
+function datafilter(key, list) {
+  var arr = _.map(list, function (d, index) {
+    return _.filter(data, function (obj) { return obj[key] === index });
+  });
 
-var technologyTypes = ["Frameworks", "Technologies", "Tools", "Techniques"];
-var classNames = ["all", "ideal", "useful", "not-ready", "avoid"];
-var colorcodes = ["#f6955f", "#82b858", "#2fb1dd", "#f1ba31", "#e65858"];
-var currentTechnologyState = 0;
+  if(key === 'techState') {
+    arr[0] = data;
+  }
+  return arr;
+}
+
+var currentData = [].concat(_toConsumableArray(data));
 var isWheelScroll = false;
-var currentTechnology = currentData[0];
-var currentTechnologyType = currentData[0].techType;
 var timeoutId;
 var windowWidth= window.innerWidth;
+
+var classNames = ["all", "ideal", "useful", "not-ready", "avoid"];
+var colorcodes = ["#f6955f", "#82b858", "#2fb1dd", "#f1ba31", "#e65858"];
+
+var technologyStates = ["All", "Ideal", "Useful", "Not ready", "Avoid"];
+var belongsToStates = datafilter('techState', technologyStates); // depends on current-data
+
+var technologyTypes = ["Frameworks", "Technologies", "Tools", "Techniques"];
+var belongsToTypes = datafilter('techType', technologyTypes) // depends on current-data
+
+var currentTechnologyState = 0;
+
+var currentTechnology = currentData[0]; // depends on current-data
+var currentTechnologyType = currentData[0].techType; // depends on current-data
+
 var rotatingAngle = 0;
 var textGroupDistance = 20;
 
@@ -424,8 +435,6 @@ function constructTextAttributes() {
   var textAttributes = [];
   var angles = [];
   var length = currentData.length;
-  currentTechnology = currentData[0];
-  currentTechnologyType = currentData[0].techType;
   equidistantAngle = 360 / length;
   for (var i = 0; i < length; i++) {
     angles[i] = i * equidistantAngle;
@@ -460,7 +469,7 @@ function constructTextAttributes() {
         dy: "0.3em",
         dx: isRightHemisphere ? "1.1em" : "-1.1em",
         fill: _i === 0 ? "#e33780" : "#345A7D",
-        "text-anchor": (isRightHemisphere ? "start" : "end") + " ",
+        "text-anchor": (isRightHemisphere ? "start" : "end"),
         "font-size": _i === 0 ? textLgSize : textSlSize,
         "font-weight": "600"
       },
@@ -503,7 +512,7 @@ function removeAllChild(element) {
 
 function removePreviousRender() {
   var listIds = ["root", "tech-state", "type-detail", "technology-detail" ]
-  listIds.map(id => {
+  listIds.map(function (id) {
     var element = document.getElementById(id);
     removeAllChild(element);
     return null;
@@ -545,7 +554,8 @@ function renderWheelModel() {
       "font-size": "13",
       "font-weight": "600"
     });
-    text.innerHTML = technologyTypes[_i2];
+    text.textContent = technologyTypes[_i2];
+    // text.innerHTML = technologyTypes[_i2];
     svgElement.appendChild(text);
   }
 
@@ -579,26 +589,28 @@ function renderWheelModel() {
   removeAllChild(technolgyDetails);
 
   for(var i = 1; i < technologyStates.length; i++) {
-    var list = stateTechnolgies[i];
-    var element = document.createElement("div");
-    element.style = "border-right: 2px solid #e9ebef"
-    element.className = "col-lg-3 col-md-3 p-0 verticalAlign";
+    var list = belongsToStates[i];
+    if (list.length > 0){
+      var element = document.createElement("div");
+      element.style = "border-right: 2px solid #e9ebef"
+      element.className = "col-lg-3 col-md-3 p-0 verticalAlign";
 
-    var group = document.createElement("div");
+      var group = document.createElement("div");
 
-    var heading = document.createElement("div");
-    heading.className = "state-heading" + " " + classNames[i];
-    heading.innerHTML = technologyStates[i];
-    group.appendChild(heading);
+      var heading = document.createElement("div");
+      heading.className = "state-heading" + " " + classNames[i];
+      heading.innerHTML = technologyStates[i];
+      group.appendChild(heading);
 
-    list.map(obj => {
-      var item = document.createElement("div");
-      item.className = "tech-item p-0"
-      item.innerHTML = obj.name;
-      group.appendChild(item);
-    });
-    element.appendChild(group);
-    technolgyDetails.appendChild(element);
+      list.map(function (obj) {
+        var item = document.createElement("div");
+        item.className = "tech-item p-0"
+        item.innerHTML = obj.name;
+        group.appendChild(item);
+      });
+      element.appendChild(group);
+      technolgyDetails.appendChild(element);
+    }
   }
 }
 
@@ -642,30 +654,33 @@ function createTechStates() {
   var techStateDiv = document.createElement("div");
 
   technologyStates.map(function(stateType, index) {
-    var selectType = document.createElement("div");
-    selectType.className = "select-type";
-    selectType.addEventListener("click", function(evt) {
-      removeSelectedType();
-      // innerDiv.className="inner";
-      currentTechnologyState = index;
-      onChangeState();
-      onLoadComplete();
-    });
+    var list = belongsToStates[index];
+    if (list.length > 0) {
+      var selectType = document.createElement("div");
+      selectType.className = "select-type";
+      selectType.addEventListener("click", function(evt) {
+        currentTechnologyState = index;
+        onChangeState();
+        currentTechnology = currentData[0]; // depends on current-data
+        currentTechnologyType = currentData[0].techType; // depends on current-data
+        onLoadComplete();
+      });
 
-    var outerDiv = document.createElement("div");
-    outerDiv.className = "outer " + classNames[index];
-    var innerDiv = document.createElement("div");
-    innerDiv.id = stateType;
-    innerDiv.className = index === currentTechnologyState ? "inner" : "";
-    outerDiv.appendChild(innerDiv);
-    selectType.appendChild(outerDiv);
+      var outerDiv = document.createElement("div");
+      outerDiv.className = "outer " + classNames[index];
+      var innerDiv = document.createElement("div");
+      innerDiv.id = stateType;
+      innerDiv.className = index === currentTechnologyState ? "inner" : "";
+      outerDiv.appendChild(innerDiv);
+      selectType.appendChild(outerDiv);
 
-    var nameElement = document.createElement("span");
-    nameElement.className = "name";
-    nameElement.innerHTML = stateType;
-    selectType.appendChild(nameElement);
+      var nameElement = document.createElement("span");
+      nameElement.className = "name";
+      nameElement.innerHTML = stateType;
+      selectType.appendChild(nameElement);
 
-    techStateDiv.appendChild(selectType);
+      techStateDiv.appendChild(selectType);
+    }
   });
   return techStateDiv;
 }
@@ -682,13 +697,6 @@ function onChangeState() {
       return null;
     });
   }
-}
-
-function removeSelectedType() {
-  technologyStates.map(function(stateType) {
-    var element = document.getElementById(stateType);
-    element.classList.remove("inner");
-  });
 }
 
 function createInnerCircleContent() {
@@ -714,6 +722,11 @@ function createInnerCircleContent() {
   span.className = "readMore";
   span.innerHTML = "read more";
   readMoreButton.appendChild(span);
+  readMoreButton.addEventListener('click', function () {
+    var modal = $('#myModal');
+    renderTechDetail();
+    modal.modal({ show: true });
+  })
   shortInfo.appendChild(readMoreButton);
 
   innerElement.appendChild(shortInfo);
@@ -722,6 +735,7 @@ function createInnerCircleContent() {
 
 function onMouseWheel(evt) {
   evt.preventDefault();
+  var animateTimeout;
   if (!isWheelScroll) {
     isWheelScroll = true;
     var deltaY = evt.deltaY;
@@ -737,20 +751,24 @@ function onMouseWheel(evt) {
       var _element = currentData.shift(); // deltaY = negative- rotate  currentData array in anticlockwise
       currentData.push(_element);
     }
-    currentTechnology = currentData[0];
-    currentTechnologyType = currentData[0].techType;
+    currentTechnology = currentData[0]; // depends on current-data
+    currentTechnologyType = currentData[0].techType; // depends on current-data
 
     // spin wheel by equidistant angle
     var animateElement = document.getElementById("animate");
     animateElement.setAttributeNS(null, "to", to);
-    animateElement.beginElement();
-
+    if('beginElement' in animateElement) {
+      animateElement.beginElement();
+      animateTimeout = 750;
+    } else {
+      animateTimeout = 250;
+    }
     clearTimeout(timeoutId);
     timeoutId = window.setTimeout(function() {
       rotatingAngle = 0;
       isWheelScroll = false;
       onLoadComplete();
-    }, 750);
+    }, animateTimeout);
   }
 }
 
@@ -772,7 +790,8 @@ function createTextGroup() {
     });
 
     var textElement = createElementNS("text", textGroupAttributes[i].tech);
-    textElement.innerHTML = currentData[i].name;
+    textElement.textContent = currentData[i].name;
+    // textElement.innerHTML = currentData[i].name;
     subGroup.appendChild(textElement);
 
     textElement.addEventListener("click", onClickRotate);
@@ -781,7 +800,8 @@ function createTextGroup() {
     subGroup.appendChild(circleElement);
 
     var circularcontent = createElementNS("text", textGroupAttributes[i].circleId);
-    circularcontent.innerHTML = currentData[i].id;
+    circularcontent.textContent = currentData[i].id;
+    // circularcontent.innerHTML = currentData[i].id;
     subGroup.appendChild(circularcontent);
 
     group.appendChild(subGroup);
@@ -794,8 +814,8 @@ function onClickRotate(evt) {
   var noOfshift = Math.round(angle / equidistantAngle);
   var arr = currentData.splice(0, noOfshift);
   currentData = currentData.concat(arr);
-  currentTechnology = currentData[0];
-  currentTechnologyType = currentData[0].techType;
+  currentTechnology = currentData[0]; // depends on current-data
+  currentTechnologyType = currentData[0].techType; // depends on current-data
 
   var to = void 0;
   if (angle > 180) {
@@ -805,12 +825,16 @@ function onClickRotate(evt) {
   }
   var animateElement = document.getElementById("animate");
   animateElement.setAttributeNS(null, "to", to);
-  animateElement.beginElement();
-
+  if('beginElement' in animateElement) {
+    animateElement.beginElement();
+    animateTimeout = 750;
+  } else {
+    animateTimeout = 250;
+  }
   clearTimeout(timeoutId);
   timeoutId = window.setTimeout(function() {
     onLoadComplete();
-  }, 750);
+  }, animateTimeout);
 }
 
 function createElementNS(name, attributes) {
@@ -822,6 +846,82 @@ function createElementNS(name, attributes) {
   });
   return element;
 }
+
+function createElement(name, attributes) {
+  var element = document.createElement(name);
+  Object.keys(attributes).map(function(key) {
+    element.setAttributeNS(null, key, attributes[key]);
+    return null;
+  });
+  return element;
+}
+
+
+function renderTechDetail() {
+  var title = document.getElementById("modal-title");
+  title.innerHTML = currentTechnology.name;
+
+  createTimeline();
+  var blogElement = document.getElementById("tech-blog");
+  for(var i = 0; i < 2; i++) {
+    var blog = document.createElement("div");
+    blog.className = "blog";
+    var image = createElement("img", {src: "./1.jpg", alt: "blog-image"});
+    blog.appendChild(image);
+    blogElement.appendChild(blog);
+  }
+}
+
+function createTimeline() {
+  var dummyData = [
+    { year: "May 2018", state: 1, content: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a"},
+    { year: "Jun 2016", state: 3, content: "type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"},
+    { year: "Feb 2015", state: 4, content: "type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"},
+  ];
+
+  var parentTimeline = document.getElementById('tech-timeline');
+  removeAllChild(parentTimeline);
+  dummyData.map(function (data) {
+    var timelineEntry = document.createElement("div");
+    timelineEntry.className = "timeline-entry";
+
+    var inner = document.createElement("div");
+    inner.className = "timeline-entry-inner";
+
+    var icon = document.createElement("div");
+    icon.className = "timeline-icon" + " " + classNames[data.state];
+    icon.innerHTML = data.year;
+
+    var label = document.createElement("div");
+    label.className = "timeline-label";
+    var header = document.createElement("h2");
+    header.innerHTML = technologyStates[data.state];
+
+    var content = document.createElement("p");
+    content.innerHTML = data.content;
+    label.appendChild(header);
+    label.appendChild(content);
+
+    inner.appendChild(icon);
+    inner.appendChild(label);
+
+    timelineEntry.appendChild(inner);
+    parentTimeline.appendChild(timelineEntry)
+  });
+}
+
+/*
+  <div class="blog" id="tech-blog-1">
+    <img src="./1.jpg" alt="image">
+    <div class="content">
+    </div>
+  </div>
+  <div class="blog" id="tech-blog-2">
+    <img src="./2.png" alt="image">
+    <div class="content">
+    </div>
+  </div>
+*/
 
 window.addEventListener("resize", function() {
   reinitialise();
